@@ -1,0 +1,6 @@
+{
+  "cloud_url": "",
+  "api_key": "",
+  "sync_interval_s": 30,
+  "_note": "Set cloud_url to your Supabase project URL (e.g. https://xxxx.supabase.co) and api_key to your anon/service key. Leave blank to run in offline-only mode. This file is gitignored."
+}

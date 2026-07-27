@@ -1,0 +1,1330 @@
+{
+  "subjects": [
+    {
+      "id": "s1",
+      "name": "Physics",
+      "order_index": 0,
+      "color": "#7c3aed",
+      "abbr": "PHY"
+    },
+    {
+      "id": "s2",
+      "name": "Chemistry",
+      "order_index": 1,
+      "color": "#0891b2",
+      "abbr": "CHE"
+    },
+    {
+      "id": "s3",
+      "name": "Biology",
+      "order_index": 2,
+      "color": "#059669",
+      "abbr": "BIO"
+    },
+    {
+      "id": "s4",
+      "name": "Mathematics",
+      "order_index": 3,
+      "color": "#e11d48",
+      "abbr": "MAT"
+    },
+    {
+      "id": "s5",
+      "name": "English",
+      "order_index": 4,
+      "color": "#9333ea",
+      "abbr": "ENG"
+    },
+    {
+      "id": "s6",
+      "name": "Hindi",
+      "order_index": 5,
+      "color": "#c2410c",
+      "abbr": "HIN"
+    },
+    {
+      "id": "s7",
+      "name": "Marathi",
+      "order_index": 6,
+      "color": "#4f46e5",
+      "abbr": "MAR"
+    },
+    {
+      "id": "s8",
+      "name": "History",
+      "order_index": 7,
+      "color": "#d97706",
+      "abbr": "HIS"
+    },
+    {
+      "id": "s9",
+      "name": "Geography",
+      "order_index": 8,
+      "color": "#2563eb",
+      "abbr": "GEO"
+    },
+    {
+      "id": "s10",
+      "name": "Civics",
+      "order_index": 9,
+      "color": "#dc2626",
+      "abbr": "CIV"
+    },
+    {
+      "id": "s11",
+      "name": "Economics",
+      "order_index": 10,
+      "color": "#9f580a",
+      "abbr": "ECO"
+    },
+    {
+      "id": "s12",
+      "name": "IT",
+      "order_index": 11,
+      "color": "#0d9488",
+      "abbr": "IT"
+    }
+  ],
+  "topics": [
+    {
+      "id": "t1",
+      "subject_id": "s1",
+      "name": "Describing Motion Around Us",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-27T13:22:27.908345+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t2",
+      "subject_id": "s1",
+      "name": "How Forces Affect Motion",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t3",
+      "subject_id": "s1",
+      "name": "Work, Energy and Simple Machines",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t4",
+      "subject_id": "s1",
+      "name": "Sound Waves: Characteristics and Applications",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-27T13:22:32.219683+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t5",
+      "subject_id": "s2",
+      "name": "Exploring Mixtures and Their Separation",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-27T13:22:33.949655+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t6",
+      "subject_id": "s2",
+      "name": "Journey Inside the Atom",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t7",
+      "subject_id": "s2",
+      "name": "Atomic Foundations of Matter",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t8",
+      "subject_id": "s3",
+      "name": "Exploration: Entering the World of Secondary Science",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t9",
+      "subject_id": "s3",
+      "name": "Cell: The Building Blocks of Life",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t10",
+      "subject_id": "s3",
+      "name": "Tissues in Action",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t11",
+      "subject_id": "s3",
+      "name": "Reproduction: How Life Continues",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t12",
+      "subject_id": "s3",
+      "name": "Patterns in Life: Diversity and Classification",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t13",
+      "subject_id": "s3",
+      "name": "Earth as a System: Energy, Matter and Life",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t14",
+      "subject_id": "s4",
+      "name": "Orienting Yourself: The Use of Coordinates",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t15",
+      "subject_id": "s4",
+      "name": "Introduction to Linear Polynomials",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t16",
+      "subject_id": "s4",
+      "name": "The World of Numbers",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t17",
+      "subject_id": "s4",
+      "name": "Exploring Algebraic Identities",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t18",
+      "subject_id": "s4",
+      "name": "I'm Up and Down, and Round and Round",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t19",
+      "subject_id": "s4",
+      "name": "Measuring Space: Perimeter and Area",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t20",
+      "subject_id": "s4",
+      "name": "Introduction to Probability",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t21",
+      "subject_id": "s4",
+      "name": "Exploring Sequences and Progressions",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t22",
+      "subject_id": "s4",
+      "name": "Introduction to Euclid's Geometry",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t23",
+      "subject_id": "s4",
+      "name": "Lines and Angles",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t24",
+      "subject_id": "s4",
+      "name": "Triangles: Congruence Theorems",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t25",
+      "subject_id": "s4",
+      "name": "Quadrilaterals",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t26",
+      "subject_id": "s4",
+      "name": "Linear Equations in Two Variables",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t27",
+      "subject_id": "s4",
+      "name": "Mensuration – Surface Area and Volume",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t28",
+      "subject_id": "s4",
+      "name": "Statistics",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t29",
+      "subject_id": "s5",
+      "name": "How I Taught My Grandmother to Read",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t30",
+      "subject_id": "s5",
+      "name": "The Pot Maker",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t31",
+      "subject_id": "s5",
+      "name": "Winds of Change",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t32",
+      "subject_id": "s5",
+      "name": "Vitamin-M",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t33",
+      "subject_id": "s5",
+      "name": "The World of Limitless Possibilities",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t34",
+      "subject_id": "s5",
+      "name": "Twin Melodies",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t35",
+      "subject_id": "s5",
+      "name": "Carrier of Words",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t36",
+      "subject_id": "s5",
+      "name": "Follow That Dream",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t37",
+      "subject_id": "s5",
+      "name": "Grammar",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t38",
+      "subject_id": "s5",
+      "name": "Writing Skills",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t39",
+      "subject_id": "s5",
+      "name": "Reading Comprehension",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t40",
+      "subject_id": "s6",
+      "name": "Prose: दो बैलों की कथा",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t41",
+      "subject_id": "s6",
+      "name": "Prose: क्या लिखूँ?",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t42",
+      "subject_id": "s6",
+      "name": "Prose: संवादहीन",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t43",
+      "subject_id": "s6",
+      "name": "Prose: ऐसी भी बातें होती हैं",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t44",
+      "subject_id": "s6",
+      "name": "Prose: आखिरी चट्टान तक",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t45",
+      "subject_id": "s6",
+      "name": "Prose: रीढ़ की हड्डी",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t46",
+      "subject_id": "s6",
+      "name": "Prose: मैं और मेरा देश",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t47",
+      "subject_id": "s6",
+      "name": "Poetry: रैदास के पद",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t48",
+      "subject_id": "s6",
+      "name": "Poetry: राम-लक्ष्मण-परशुराम संवाद",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t49",
+      "subject_id": "s6",
+      "name": "Poetry: भारति, जय, विजयकरे!",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t50",
+      "subject_id": "s6",
+      "name": "Poetry: झाँसी की रानी",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t51",
+      "subject_id": "s6",
+      "name": "Poetry: घर की याद",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t52",
+      "subject_id": "s6",
+      "name": "Supp: निर्मल जीव सिंह 'सेवा'",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t53",
+      "subject_id": "s6",
+      "name": "Supp: सब याद तुम्हारी आती हैं",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t54",
+      "subject_id": "s6",
+      "name": "Grammar",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t55",
+      "subject_id": "s6",
+      "name": "Writing Skills",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t56",
+      "subject_id": "s6",
+      "name": "Reading Comprehension",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t57",
+      "subject_id": "s7",
+      "name": "सर्वात्मका शिवसुंदरा",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t58",
+      "subject_id": "s7",
+      "name": "संतवाणी",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t59",
+      "subject_id": "s7",
+      "name": "बेटा मी ऐकतो आहे",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t60",
+      "subject_id": "s7",
+      "name": "जी.आय.पी. रेल्वे",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t61",
+      "subject_id": "s7",
+      "name": "व्यायामाचे महत्त्व",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t62",
+      "subject_id": "s7",
+      "name": "ऑलिंपिक वर्तुळाचा गोफ",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t63",
+      "subject_id": "s7",
+      "name": "दिव्याच्या शोधामागचे दिव्य",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t64",
+      "subject_id": "s7",
+      "name": "उजाड उघडे माळरानही",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t65",
+      "subject_id": "s7",
+      "name": "कुलूप",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t66",
+      "subject_id": "s7",
+      "name": "आभाळातल्या पाऊलवाटा",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t67",
+      "subject_id": "s7",
+      "name": "पुन्हा एकदा",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t68",
+      "subject_id": "s7",
+      "name": "टिपफूल",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t69",
+      "subject_id": "s7",
+      "name": "माझे शिक्षक आणि संस्कार",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t70",
+      "subject_id": "s7",
+      "name": "शब्दांचा खेळ",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t71",
+      "subject_id": "s7",
+      "name": "Supplementary Reading",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t72",
+      "subject_id": "s7",
+      "name": "Grammar",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t73",
+      "subject_id": "s7",
+      "name": "Writing Skills",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t74",
+      "subject_id": "s7",
+      "name": "Reading Comprehension",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t75",
+      "subject_id": "s8",
+      "name": "Early Humans and Beginning of Civilisation",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-27T13:22:46.674149+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t76",
+      "subject_id": "s8",
+      "name": "State and Society (upto 1000 CE)",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t77",
+      "subject_id": "s8",
+      "name": "Resistance and Resilience (1000 CE–1700 CE)",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t78",
+      "subject_id": "s8",
+      "name": "India and the World-I (1900 BCE–1200 CE)",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t79",
+      "subject_id": "s9",
+      "name": "Understanding Social Science",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t80",
+      "subject_id": "s9",
+      "name": "Shaping of the Earth's Surface",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t81",
+      "subject_id": "s9",
+      "name": "Atmosphere and Climate",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t82",
+      "subject_id": "s9",
+      "name": "Oceans and Life",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t83",
+      "subject_id": "s9",
+      "name": "Life on Earth",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t84",
+      "subject_id": "s10",
+      "name": "Democracy",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t85",
+      "subject_id": "s10",
+      "name": "Elections",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t86",
+      "subject_id": "s10",
+      "name": "Authority",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t87",
+      "subject_id": "s11",
+      "name": "Building Blocks in Economics",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t88",
+      "subject_id": "s11",
+      "name": "The Price Puzzle: What Drives the Market",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t89",
+      "subject_id": "s11",
+      "name": "From Ideas to Startups",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t90",
+      "subject_id": "s11",
+      "name": "Smart Ways to Manage Your Finances",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t91",
+      "subject_id": "s12",
+      "name": "ES: Communication Skills-I",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t92",
+      "subject_id": "s12",
+      "name": "ES: Self-Management Skills-I",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t93",
+      "subject_id": "s12",
+      "name": "ES: ICT Skills-I",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t94",
+      "subject_id": "s12",
+      "name": "ES: Entrepreneurial Skills-I",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t95",
+      "subject_id": "s12",
+      "name": "ES: Green Skills-I",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t96",
+      "subject_id": "s12",
+      "name": "SS: Introduction to IT–ITeS Industry",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t97",
+      "subject_id": "s12",
+      "name": "SS: Data Entry & Keyboarding Skills",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t98",
+      "subject_id": "s12",
+      "name": "SS: Digital Documentation",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t99",
+      "subject_id": "s12",
+      "name": "SS: Electronic Spreadsheet",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    },
+    {
+      "id": "t100",
+      "subject_id": "s12",
+      "name": "SS: Digital Presentation",
+      "studied": false,
+      "mastered": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00",
+      "taught": false,
+      "revised": false
+    }
+  ],
+  "weekly_tasks": [
+    {
+      "id": "w1",
+      "subject_id": "s1",
+      "task": "Solve 20 numericals – Motion chapter",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w2",
+      "subject_id": "s1",
+      "task": "Derive Force laws – write 3 times",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w3",
+      "subject_id": "s2",
+      "task": "Separation techniques – diagram practice",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w4",
+      "subject_id": "s2",
+      "task": "Atomic models comparison table",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w5",
+      "subject_id": "s3",
+      "task": "Draw & label Cell diagram (plant + animal)",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w6",
+      "subject_id": "s3",
+      "task": "Tissues – comparison chart",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w7",
+      "subject_id": "s4",
+      "task": "Coordinate Geometry – 15 graph sums",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w8",
+      "subject_id": "s4",
+      "task": "Polynomials – factor theorem 10 problems",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w9",
+      "subject_id": "s4",
+      "task": "Lines & Angles theorem proofs – write twice",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w10",
+      "subject_id": "s5",
+      "task": "Write summary: How I Taught My Grandmother",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w11",
+      "subject_id": "s5",
+      "task": "Grammar exercises – tenses worksheet",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w12",
+      "subject_id": "s6",
+      "task": "दो बैलों की कथा – प्रश्न उत्तर लिखो",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w13",
+      "subject_id": "s6",
+      "task": "कविता पाठ – रैदास के पद याद करो",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w14",
+      "subject_id": "s7",
+      "task": "पाठ 1 – प्रश्नोत्तर लेखन",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w15",
+      "subject_id": "s7",
+      "task": "Nibandh: व्यायामाचे महत्त्व (300 words)",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w16",
+      "subject_id": "s8",
+      "task": "Early Civilisations – timeline poster",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w17",
+      "subject_id": "s8",
+      "task": "State & Society – notes + key dates",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w18",
+      "subject_id": "s9",
+      "task": "Earth's surface – diagram labelling",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w19",
+      "subject_id": "s9",
+      "task": "Climate zones – map work",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w20",
+      "subject_id": "s10",
+      "task": "Democracy – MCQ practice (30 Qs)",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w21",
+      "subject_id": "s10",
+      "task": "Authority chapter – short notes",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w22",
+      "subject_id": "s11",
+      "task": "Economics vocab flashcards (20 terms)",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w23",
+      "subject_id": "s11",
+      "task": "Price puzzle – case study analysis",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w24",
+      "subject_id": "s12",
+      "task": "Create MS Word formatted document",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    },
+    {
+      "id": "w25",
+      "subject_id": "s12",
+      "task": "MS Excel – marks grade calculator sheet",
+      "done": false,
+      "updated_at": "2026-07-26T12:19:52.860439+00:00"
+    }
+  ],
+  "daily_tasks": [
+    {
+      "id": "d1",
+      "task": "Morning Revision (30 min)",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d2",
+      "task": "90-min Deep Work – Block 1",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d3",
+      "task": "Solve 10 MCQs from weakest subject",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d4",
+      "task": "90-min Deep Work – Block 2",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d5",
+      "task": "Evening Formula / Vocab Review",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d6",
+      "task": "No Phone during study blocks 🚫",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d7",
+      "task": "Drink 2L Water 💧",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d8",
+      "task": "Write tomorrow's study plan 📝",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    },
+    {
+      "id": "d9",
+      "task": "8 Hours Sleep 🌙",
+      "done": false,
+      "updated_at": "2026-07-27T13:19:44.702753+00:00"
+    }
+  ],
+  "_meta": {
+    "last_sync": null,
+    "last_date": "2026-07-27",
+    "version": 2,
+    "schema": "studied_mastered",
+    "created_at": "2026-07-26T12:19:52.860439+00:00"
+  }
+}
