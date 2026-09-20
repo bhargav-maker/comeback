@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 9 Study Dashboard — CBSE 60-Day Master Roadmap</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Google Fonts: Work Sans & Fraunces -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Work Sans', sans-serif; background-color: #070709; color: #f4f4f5; }
+    h1, h2, h3, .serif-font { font-family: 'Fraunces', serif; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #070709; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#070709] text-zinc-100 flex flex-col selection:bg-cyan-500 selection:text-black">
+
+  <!-- TOP HEADER BAR -->
+  <header class="border-b border-zinc-800 bg-[#0b0c10]/80 backdrop-blur sticky top-0 z-40 px-4 lg:px-8 py-3">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <!-- Navigation Pills -->
+      <div class="flex items-center gap-2 bg-[#141620] p-1 rounded-xl border border-zinc-800/80">
+        <button id="tabDashboard" onclick="switchTab('dashboard')" class="px-3.5 py-1.5 rounded-lg text-xs font-medium transition bg-cyan-500 text-black font-semibold shadow-sm">
+          📊 Main Dashboard
+        </button>
+        <button id="tabTimetable" onclick="switchTab('timetable')" class="px-3.5 py-1.5 rounded-lg text-xs font-medium transition text-zinc-400 hover:text-white">
+          📅 Timetable Grid
+        </button>
+      </div>
+
+      <!-- Live Clock & Date Simulator Controls -->
+      <div class="flex items-center gap-3 text-xs">
+        <div class="hidden md:flex items-center gap-2 bg-[#12141c] px-3 py-1.5 rounded-lg border border-zinc-800 font-mono text-zinc-300">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="digitalClock">03:34:32 PM</span>
+          <span class="text-zinc-600">|</span>
+          <span id="digitalDate" class="text-zinc-400">Monday, 21 Sept 2026</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button onclick="simulateNextDay(1)" title="Simulate Tomorrow (+1 Day)" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-[11px] border border-zinc-700 transition">
+            +1 Day 🧪
+          </button>
+          <button onclick="resetToRealToday()" title="Reset to real device date" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-[11px] border border-zinc-700 transition">
+            Live Today
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 flex-1 w-full space-y-6">
+
+    <!-- WELCOME / GREETING BANNER -->
+    <section class="flex flex-col md:flex-row md:items-end justify-between gap-4 bg-gradient-to-r from-[#12141c] to-[#0c0e14] p-6 rounded-2xl border border-zinc-800/80 shadow-lg relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span id="heroDateBadge" class="text-xs font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">21 Sept 2026</span>
+          <span class="text-zinc-500">•</span>
+          <span class="text-xs text-zinc-400 font-medium">CBSE Class 9 Roadmap (Sept 21 – Nov 29)</span>
+        </div>
+        <h1 id="greetingLabel" class="text-2xl sm:text-3xl font-bold tracking-tight serif-font text-zinc-100">GOOD MORNING</h1>
+        <p class="text-sm text-zinc-400 mt-0.5">Study Dashboard — Custom Freed-Core Syllabus Layout</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="document.getElementById('todoInput').focus()" class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-bold transition shadow-lg shadow-cyan-500/10 flex items-center gap-1.5">
+          <span>+ Add To-Do</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- METRICS ROW: CIRCULAR PROGRESS & SUBJECT BARS -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- Overall Progress Ring -->
+      <div class="bg-[#10121a] p-5 rounded-2xl border border-zinc-800 flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-xs font-bold tracking-wider uppercase text-zinc-400 font-mono">Overall Syllabus Progress</h3>
+          <span id="overallPctText" class="text-xs font-mono text-cyan-400 font-bold">0%</span>
+        </div>
+        <div class="flex items-center gap-5 my-2">
+          <div class="relative w-20 h-20 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90">
+              <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="6" class="text-zinc-800" fill="transparent"/>
+              <circle id="overallRingCircle" cx="40" cy="40" r="34" stroke="currentColor" stroke-width="6" class="text-cyan-500 transition-all duration-500" stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round" fill="transparent"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center font-mono font-bold text-sm" id="overallCenterNum">0%</div>
+          </div>
+          <div>
+            <div class="text-lg font-bold font-mono text-zinc-200" id="completedTasksCount">0 / 120</div>
+            <div class="text-xs text-zinc-400 mt-0.5">Total sessions and chapters completed across all 10 weeks.</div>
+          </div>
+        </div>
+        <div class="text-[11px] text-zinc-500 pt-2 border-t border-zinc-800/60 flex justify-between">
+          <span>Target: Nov 29, 2026</span>
+          <span class="text-cyan-400 font-medium">1 Heavy + 1 Light Daily</span>
+        </div>
+      </div>
+
+      <!-- Subject Progress Chart (11 Subjects) -->
+      <div class="bg-[#10121a] p-5 rounded-2xl border border-zinc-800 flex flex-col justify-between md:col-span-1">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-xs font-bold tracking-wider uppercase text-zinc-400 font-mono">Subject Progress Breakdown</h3>
+          <span class="text-[11px] text-zinc-500">11 Subjects</span>
+        </div>
+        <div class="grid grid-cols-11 gap-1.5 items-end h-24 my-2 px-1" id="subjectBarChartContainer">
+          <!-- Populated dynamically via JS -->
+        </div>
+        <div class="text-[11px] text-zinc-500 pt-2 border-t border-zinc-800/60 flex justify-between font-mono">
+          <span>PHY, CHE, BIO, MAT, ENG, HIN, MAR, SST, KAU, IT, WS</span>
+        </div>
+      </div>
+
+      <!-- Week Completion Ring -->
+      <div class="bg-[#10121a] p-5 rounded-2xl border border-zinc-800 flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-xs font-bold tracking-wider uppercase text-zinc-400 font-mono">Current Week Completion</h3>
+          <span id="weekPctText" class="text-xs font-mono text-emerald-400 font-bold">0%</span>
+        </div>
+        <div class="flex items-center gap-5 my-2">
+          <div class="relative w-20 h-20 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90">
+              <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="6" class="text-zinc-800" fill="transparent"/>
+              <circle id="weekRingCircle" cx="40" cy="40" r="34" stroke="currentColor" stroke-width="6" class="text-emerald-500 transition-all duration-500" stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round" fill="transparent"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center font-mono font-bold text-sm" id="weekCenterNum">0%</div>
+          </div>
+          <div>
+            <div class="text-lg font-bold font-mono text-zinc-200" id="weekCompletedCount">0 / 6</div>
+            <div class="text-xs text-zinc-400 mt-0.5" id="currentWeekTitleLabel">Active Week Progress</div>
+          </div>
+        </div>
+        <div class="text-[11px] text-zinc-500 pt-2 border-t border-zinc-800/60 flex justify-between">
+          <span>Sunday = Backlog &amp; Revision</span>
+          <span class="text-emerald-400 font-medium">No new chapters on Sun</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN DASHBOARD VIEW (PRIORITY PLAN & TO-DO LIST) -->
+    <div id="dashboardView" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- LEFT COLUMN: TODAY'S PRIORITY PLAN -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- Overdue Backlog Alert Banner -->
+        <div id="overdueAlertBanner" class="hidden bg-amber-500/10 border border-amber-500/40 p-4 rounded-2xl flex items-start gap-3">
+          <span class="text-amber-400 text-lg">⚠️</span>
+          <div class="flex-1">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 font-mono">Overdue Backlog Detected</h4>
+            <p class="text-xs text-zinc-300 mt-0.5" id="overdueCountText">You have unfinished tasks from previous study days.</p>
+          </div>
+          <button onclick="toggleOverdueDrawer()" class="px-2.5 py-1 rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-semibold transition border border-amber-500/40">
+            View Backlog
+          </button>
+        </div>
+
+        <!-- Collapsible Overdue Drawer -->
+        <div id="overdueDrawer" class="hidden bg-[#12141c] border border-amber-500/30 p-4 rounded-2xl space-y-2">
+          <div class="flex items-center justify-between pb-2 border-b border-zinc-800">
+            <span class="text-xs font-bold uppercase text-amber-400 font-mono">Unfinished Past Tasks</span>
+            <button onclick="toggleOverdueDrawer()" class="text-xs text-zinc-400 hover:text-white">Close ×</button>
+          </div>
+          <div id="overdueItemsList" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Priority Plan Card -->
+        <div class="bg-[#10121a] rounded-2xl border border-zinc-800 p-5 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-zinc-800">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse"></span>
+              <h2 class="text-base font-bold font-serif text-zinc-100">Today's Priority Plan</h2>
+            </div>
+            <!-- Day Navigation Controls -->
+            <div class="flex items-center gap-1.5">
+              <button onclick="navigateDay(-1)" class="p-1.5 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 transition text-xs" title="Previous Day">◀</button>
+              <button onclick="jumpToToday()" class="px-2.5 py-1 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-cyan-400 font-mono text-xs transition" id="todayButtonLabel">Today</button>
+              <button onclick="navigateDay(1)" class="p-1.5 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 transition text-xs" title="Next Day">▶</button>
+              <span id="todayPlanBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 font-bold ml-1">Day 1</span>
+            </div>
+          </div>
+
+          <!-- Priority Tasks Container -->
+          <div id="priorityTasksContainer" class="space-y-3">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: DAILY TO-DO LIST -->
+      <div class="lg:col-span-5 space-y-4">
+        <div class="bg-[#10121a] rounded-2xl border border-zinc-800 p-5 shadow-sm space-y-4 flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <h2 class="text-base font-bold font-serif text-zinc-100">Daily To-Do List</h2>
+              </div>
+              <span id="todoStatsBadge" class="text-xs font-mono text-zinc-400">0 completed</span>
+            </div>
+
+            <!-- Fast Inline Add To-Do Bar (No categories) -->
+            <form onsubmit="handleAddTodoSubmit(event)" class="mt-3 flex gap-2">
+              <input type="text" id="todoInput" placeholder="Add custom task for today (e.g., Draw plant cell)..." class="flex-1 bg-[#161822] border border-zinc-800 rounded-xl px-3.5 py-2 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-cyan-500 transition">
+              <button type="submit" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-bold rounded-xl transition shadow-md shadow-cyan-500/10 whitespace-nowrap">
+                + Add
+              </button>
+            </form>
+
+            <!-- Filter Pills -->
+            <div class="flex items-center gap-1.5 mt-3 text-xs">
+              <button onclick="setTodoFilter('all')" id="filterBtn-all" class="px-2.5 py-1 rounded-lg bg-zinc-800 text-zinc-200 font-medium transition">All</button>
+              <button onclick="setTodoFilter('active')" id="filterBtn-active" class="px-2.5 py-1 rounded-lg text-zinc-400 hover:text-white transition">Active</button>
+              <button onclick="setTodoFilter('done')" id="filterBtn-done" class="px-2.5 py-1 rounded-lg text-zinc-400 hover:text-white transition">Done</button>
+              <div class="ml-auto">
+                <button onclick="clearCompletedTodos()" class="text-[11px] text-zinc-500 hover:text-red-400 transition" title="Clear completed items">🧹 Clear Done</button>
+              </div>
+            </div>
+
+            <!-- To-Do Items List -->
+            <div id="todoItemsContainer" class="mt-3 space-y-2 max-h-[320px] overflow-y-auto pr-1">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <div class="text-[11px] text-zinc-500 pt-3 border-t border-zinc-800/60 flex items-center justify-between">
+            <span>Saved locally in your browser</span>
+            <span class="font-mono text-zinc-400">Auto-sync active</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TIMETABLE GRID VIEW -->
+    <div id="timetableGridView" class="hidden space-y-6">
+      <div class="bg-[#10121a] rounded-2xl border border-zinc-800 p-6 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-zinc-800">
+          <div>
+            <h2 class="text-xl font-bold font-serif text-zinc-100">60-Day Master Timetable Grid</h2>
+            <p class="text-xs text-zinc-400 mt-0.5">Full CBSE Class 9 roadmap with 1 Heavy + 1 Light daily pairing and natural chapter part-splits.</p>
+          </div>
+          <button onclick="switchTab('dashboard')" class="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-xs font-semibold text-zinc-200 transition">
+            ← Back to Dashboard
+          </button>
+        </div>
+
+        <!-- Timetable Search & Filter -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <input type="text" id="timetableSearchInput" oninput="renderTimetableGrid()" placeholder="Search chapters, subjects, or dates..." class="w-full sm:w-80 bg-[#161822] border border-zinc-800 rounded-xl px-3.5 py-2 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-cyan-500">
+          <div class="text-xs text-zinc-400 font-mono" id="timetableCountLabel">Showing all 10 weeks</div>
+        </div>
+
+        <!-- Full Timetable Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-800 text-zinc-400 font-mono">
+                <th class="py-3 px-3 font-semibold">Day / Date</th>
+                <th class="py-3 px-3 font-semibold">Heavy Subject (Slot 1)</th>
+                <th class="py-3 px-3 font-semibold">Light / Skill Subject (Slot 2)</th>
+                <th class="py-3 px-3 font-semibold text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody id="timetableTableBody" class="divide-y divide-zinc-800/60">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- JAVASCRIPT LOGIC & MASTER SCHEDULE -->
+  <script>
+    const STORAGE_KEY = "cbse_class9_dashboard_state_v5";
+    const TODOS_KEY = "cbse_class9_todos_v5";
+
+    const masterSchedule = [
+      // Week 1
+      { day: 1, date: "2026-09-21", isSunday: false, heavy: { sub: "Science", title: "Ch 4: Describing Motion Around Us" }, light: { sub: "English", title: "Lit Ch 1: The Fun They Had" } },
+      { day: 2, date: "2026-09-22", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 3: The World of Numbers" }, light: { sub: "Hindi", title: "Lit Ch 1: दो बैलों की कथा (प्रेमचंद)" } },
+      { day: 3, date: "2026-09-23", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 4 (Geography): India – Size and Location" }, light: { sub: "Marathi", title: "Lit Ch 1: संतवाणी" } },
+      { day: 4, date: "2026-09-24", isSunday: false, heavy: { sub: "Science", title: "Ch 2: Cell – The Building Block of Life" }, light: { sub: "English", title: "Lit Ch 2: The Sound of Music" } },
+      { day: 5, date: "2026-09-25", isSunday: false, heavy: { sub: "Maths", title: "P2: Placeholder Unit 3 (Lines and Angles)" }, light: { sub: "Hindi", title: "Lit Ch 2: ल्हासा की ओर" } },
+      { day: 6, date: "2026-09-26", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 1 (History): The French Revolution" }, light: { sub: "Marathi", title: "Lit Ch 2: बेटा, मी ऐकतो आहे!" } },
+      { day: 7, date: "2026-09-27", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 2
+      { day: 8, date: "2026-09-28", isSunday: false, heavy: { sub: "Science", title: "Ch 8: Journey Inside the Atom" }, light: { sub: "IT", title: "Unit 1 (Part A): Communication Skills-I" } },
+      { day: 9, date: "2026-09-29", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 1: Orienting Yourself – Coordinates" }, light: { sub: "English", title: "Grammar: Tenses" } },
+      { day: 10, date: "2026-09-30", isSunday: false, heavy: { sub: "SST", title: "P2: Placeholder Unit 3 (Geo: Climate)" }, light: { sub: "Hindi", title: "Grammar: शब्द निर्माण Part 1" } },
+      { day: 11, date: "2026-10-01", isSunday: false, heavy: { sub: "Science", title: "Ch 6: How Forces Affect Motion" }, light: { sub: "Marathi", title: "Grammar: शब्दांच्या जाती" } },
+      { day: 12, date: "2026-10-02", isSunday: false, heavy: { sub: "Maths", title: "P2: Placeholder Unit 1 (Linear Equations)" }, light: { sub: "Kaushal", title: "Module 1: Vocational Skill Foundations I" } },
+      { day: 13, date: "2026-10-03", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 7 (Pol Sci): What is Democracy?" }, light: { sub: "Hindi", title: "Lit Ch 7: साखियाँ एवं सबद" } },
+      { day: 14, date: "2026-10-04", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 3
+      { day: 15, date: "2026-10-05", isSunday: false, heavy: { sub: "Science", title: "Ch 1: Exploration" }, light: { sub: "English", title: "Lit Ch 3: The Little Girl" } },
+      { day: 16, date: "2026-10-06", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 6: Perimeter and Area" }, light: { sub: "English", title: "Grammar: Modals" } },
+      { day: 17, date: "2026-10-07", isSunday: false, heavy: { sub: "SST", title: "P2: Unit 1 (Hist: Forest Society)" }, light: { sub: "Hindi", title: "Grammar: समास" } },
+      { day: 18, date: "2026-10-08", isSunday: false, heavy: { sub: "Science", title: "Ch 10: Sound Waves" }, light: { sub: "Marathi", title: "Lit Ch 3: जी. आय. पी. रेल्वे" } },
+      { day: 19, date: "2026-10-09", isSunday: false, heavy: { sub: "Maths", title: "P2: Unit 5 (Quadrilaterals)" }, light: { sub: "IT", title: "Unit 2 (Part A): Self-Management Skills-I" } },
+      { day: 20, date: "2026-10-10", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 5 (Geo): Physical Features of India" }, light: { sub: "Kaushal", title: "Module 2: Vocational Skill Foundations II" } },
+      { day: 21, date: "2026-10-11", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 4
+      { day: 22, date: "2026-10-12", isSunday: false, heavy: { sub: "Science", title: "Ch 3: Tissues in Action" }, light: { sub: "Hindi", title: "Lit Ch 3: उपभोक्तावाद की संस्कृति" } },
+      { day: 23, date: "2026-10-13", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 4: Exploring Algebraic Identities" }, light: { sub: "English", title: "Lit Ch 4: A Truly Beautiful Mind" } },
+      { day: 24, date: "2026-10-14", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 9 (Eco): The Story of Village Palampur" }, light: { sub: "Hindi", title: "Lit Ch 8: वाख (ललद्यद)" } },
+      { day: 25, date: "2026-10-15", isSunday: false, heavy: { sub: "Science", title: "Ch 7: Work, Energy, and Simple Machines" }, light: { sub: "Marathi", title: "Grammar: काळ व काळांचे प्रकार" } },
+      { day: 26, date: "2026-10-16", isSunday: false, heavy: { sub: "Maths", title: "P2: Unit 2 (Intro to Euclid's Geometry)" }, light: { sub: "Kaushal", title: "Module 3: Vocational Skill Foundations III" } },
+      { day: 27, date: "2026-10-17", isSunday: false, heavy: { sub: "SST", title: "P2: Unit 6 (Pol Sci: Electoral Politics)" }, light: { sub: "IT", title: "Unit 6 (Part B): Intro to IT-ITeS Industry" } },
+      { day: 28, date: "2026-10-18", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 5
+      { day: 29, date: "2026-10-19", isSunday: false, heavy: { sub: "Science", title: "Ch 5: Exploring Mixtures and Their Separation" }, light: { sub: "English", title: "Lit Ch 5: The Road Not Taken & Wind" } },
+      { day: 30, date: "2026-10-20", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 7: Probability" }, light: { sub: "English", title: "Grammar: Subject-Verb Concord" } },
+      { day: 31, date: "2026-10-21", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 2 (Hist): Socialism in Europe" }, light: { sub: "Hindi", title: "Grammar: वाक्य भेद" } },
+      { day: 32, date: "2026-10-22", isSunday: false, heavy: { sub: "Science", title: "Ch 11: Reproduction" }, light: { sub: "Marathi", title: "Lit Ch 4: व्यायामाचे महत्त्व" } },
+      { day: 33, date: "2026-10-23", isSunday: false, heavy: { sub: "Maths", title: "P2: Unit 4 (Triangles & Congruence)" }, light: { sub: "IT", title: "Unit 7 (Part B): Data Entry & Keyboarding Skills" } },
+      { day: 34, date: "2026-10-24", isSunday: false, heavy: { sub: "SST", title: "P2: Unit 4 (Geo: Vegetation & Wildlife)" }, light: { sub: "Kaushal", title: "Module 4: Vocational Skill Foundations IV" } },
+      { day: 35, date: "2026-10-25", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 6
+      { day: 36, date: "2026-10-26", isSunday: false, heavy: { sub: "Science", title: "Ch 9: Atomic Foundations of Matter" }, light: { sub: "Hindi", title: "Lit Ch 4: साँवले सपनों की याद" } },
+      { day: 37, date: "2026-10-27", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 2: Intro to Linear Polynomials" }, light: { sub: "English", title: "Lit Ch 6: The Lost Child" } },
+      { day: 38, date: "2026-10-28", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 8 (Pol Sci): Constitutional Design" }, light: { sub: "Hindi", title: "Grammar: अलंकार" } },
+      { day: 39, date: "2026-10-29", isSunday: false, heavy: { sub: "Science", title: "Ch 13: Earth as a System" }, light: { sub: "Marathi", title: "Grammar: वाक्प्रचार व म्हणी" } },
+      { day: 40, date: "2026-10-30", isSunday: false, heavy: { sub: "Maths", title: "P2: Unit 7 (Statistics)" }, light: { sub: "IT", title: "Unit 3 (Part A): Basic ICT Skills-I" } },
+      { day: 41, date: "2026-10-31", isSunday: false, heavy: { sub: "SST", title: "P2: Unit 8 (Eco: People as Resource & Poverty)" }, light: { sub: "Kaushal", title: "Module 5: Vocational Skill Foundations V" } },
+      { day: 42, date: "2026-11-01", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 7
+      { day: 43, date: "2026-11-02", isSunday: false, heavy: { sub: "Science", title: "Ch 12: Patterns in Life – Diversity" }, light: { sub: "English", title: "Lit Ch 7: The Adventures of Toto" } },
+      { day: 44, date: "2026-11-03", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 8: Sequences" }, light: { sub: "English", title: "Grammar: Reported Speech Part 1" } },
+      { day: 45, date: "2026-11-04", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 6 (Geography): Drainage" }, light: { sub: "Hindi", title: "Writing: अनुच्छेद लेखन" } },
+      { day: 46, date: "2026-11-05", isSunday: false, heavy: { sub: "Maths", title: "P2: Unit 6 (Surface Areas and Volumes)" }, light: { sub: "Marathi", title: "Lit Ch 5: ऑलिंपिक वर्तुळांचा गोफ" } },
+      { day: 47, date: "2026-11-06", isSunday: false, heavy: { sub: "SST", title: "P2: Unit 2 (Hist: Pastoralists)" }, light: { sub: "Kaushal", title: "Module 6: Vocational Skill Foundations VI" } },
+      { day: 48, date: "2026-11-07", isSunday: false, heavy: { sub: "Maths", title: "P1 Ch 5: Circles" }, light: { sub: "IT", title: "Unit 8 (Part B): Digital Documentation" } },
+      { day: 49, date: "2026-11-08", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 8
+      { day: 50, date: "2026-11-09", isSunday: false, heavy: { sub: "SST", title: "P1 Ch 3 (History): Nazism" }, light: { sub: "English", title: "Grammar: Determiners & Articles" } },
+      { day: 51, date: "2026-11-10", isSunday: false, heavy: { sub: "Maths", title: "P2: Unit 8 (Coordinate & Geometric Review)" }, light: { sub: "Hindi", title: "Lit Ch 5: प्रेमचंद के फटे जूते" } },
+      { day: 52, date: "2026-11-11", isSunday: false, heavy: { sub: "SST", title: "P2: Unit 5 (Geo: Population Dynamics)" }, light: { sub: "Marathi", title: "Grammar: शब्दसंपत्ती" } },
+      { day: 53, date: "2026-11-12", isSunday: false, heavy: { sub: "SST", title: "P2: Unit 7 (Pol Sci: Working of Institutions)" }, light: { sub: "Hindi", title: "Lit Ch 9: सवैये (रसखान)" } },
+      { day: 54, date: "2026-11-13", isSunday: false, heavy: { sub: "English", title: "Writing: Descriptive Paragraph" }, light: { sub: "Kaushal", title: "Module 7: Vocational Skill Foundations VII" } },
+      { day: 55, date: "2026-11-14", isSunday: false, heavy: { sub: "Marathi", title: "Writing: निबंध / अनुच्छेद लेखन" }, light: { sub: "Marathi", title: "Lit Ch 6: दिव्याच्या शोधामागचे दिव्य" } },
+      { day: 56, date: "2026-11-15", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 9
+      { day: 57, date: "2026-11-16", isSunday: false, heavy: { sub: "Hindi", title: "Writing: पत्र लेखन" }, light: { sub: "English", title: "Lit Ch 8: In the Kingdom of Fools" } },
+      { day: 58, date: "2026-11-17", isSunday: false, heavy: { sub: "English", title: "Grammar: Reported Speech Part 2" }, light: { sub: "Kaushal", title: "Module 8: Vocational Skill Foundations VIII" } },
+      { day: 59, date: "2026-11-18", isSunday: false, heavy: { sub: "Hindi", title: "Grammar: शब्द निर्माण Part 2" }, light: { sub: "IT", title: "Unit 4 (Part A): Entrepreneurial Skills-I" } },
+      { day: 60, date: "2026-11-19", isSunday: false, heavy: { sub: "Marathi", title: "Writing: पत्रलेखन" }, light: { sub: "Hindi", title: "Lit Ch 6: मेरे बचपन के दिन" } },
+      { day: 61, date: "2026-11-20", isSunday: false, heavy: { sub: "English", title: "Writing: Diary Entry & Story Writing" }, light: { sub: "Kaushal", title: "Module 9: Vocational Skill Foundations IX" } },
+      { day: 62, date: "2026-11-21", isSunday: false, heavy: { sub: "Marathi", title: "Writing: कथालेखन" }, light: { sub: "Marathi", title: "Lit Ch 7: सखू आजी (राजन गवस)" } },
+      { day: 63, date: "2026-11-22", isSunday: true, title: "Sunday Rule: Backlog Clearance Buffer", desc: "Cumulative Retrieval & Formula Logging" },
+      // Week 10
+      { day: 64, date: "2026-11-23", isSunday: false, heavy: { sub: "Hindi", title: "Writing: संवाद लेखन एवं लघुकथा" }, light: { sub: "Kaushal", title: "Module 10: Vocational Skill Foundations X" } },
+      { day: 65, date: "2026-11-24", isSunday: false, heavy: { sub: "Marathi", title: "Writing: बातमी लेखन / वृत्तान्त लेखन" }, light: { sub: "IT", title: "Unit 9 (Part B): Electronic Spreadsheet" } },
+      { day: 66, date: "2026-11-25", isSunday: false, heavy: { sub: "Hindi", title: "Lit Ch 10: कैदी और कोकिला" }, light: { sub: "Kaushal", title: "Module 11: Vocational Skill Foundations XI" } },
+      { day: 67, date: "2026-11-26", isSunday: false, heavy: { sub: "Hindi", title: "Lit Ch 11: इस जल प्रलय में" }, light: { sub: "Marathi", title: "Lit Ch 8: हास्यचित्रांतली मुलं" } },
+      { day: 68, date: "2026-11-27", isSunday: false, heavy: { sub: "Hindi", title: "Lit Ch 12: मेरे संग की औरतें" }, light: { sub: "IT", title: "Unit 5 (Part A): Green Skills-I" } },
+      { day: 69, date: "2026-11-28", isSunday: false, heavy: { sub: "IT", title: "Unit 10 (Part B): Digital Presentation" }, light: { sub: "Kaushal", title: "Module 12: Vocational Skill Foundations XII" } },
+      { day: 70, date: "2026-11-29", isSunday: true, title: "Sunday Rule: Full Diagnostic Simulation", desc: "Comprehensive Term-End Synthesis" }
+    ];
+
+    const subjectSynonyms = {
+      "Physics": { short: "PHY", full: "Physics", textbook: "Exploration", color: "violet" },
+      "Chemistry": { short: "CHE", full: "Chemistry", textbook: "Exploration", color: "cyan" },
+      "Biology": { short: "BIO", full: "Biology", textbook: "Exploration", color: "emerald" },
+      "Science": { short: "SCI", full: "Science", textbook: "Exploration", color: "emerald" },
+      "Mathematics": { short: "MAT", full: "Mathematics", textbook: "Ganita Manjari", color: "blue" },
+      "Maths": { short: "MAT", full: "Mathematics", textbook: "Ganita Manjari", color: "blue" },
+      "SST": { short: "SST", full: "Social Science", textbook: "Understanding Society", color: "amber" },
+      "English": { short: "ENG", full: "English", textbook: "Language & Lit", color: "rose" },
+      "Hindi": { short: "HIN", full: "Hindi", textbook: "Language & Lit", color: "fuchsia" },
+      "Marathi": { short: "MAR", full: "Marathi", textbook: "Aksharbharati", color: "teal" },
+      "Kaushal": { short: "KAU", full: "Kaushal Vikas", textbook: "Vocational Skills", color: "purple" },
+      "IT": { short: "IT", full: "Information Tech", textbook: "Code 402", color: "sky" }
+    };
+
+    function getSubjectMeta(subName) {
+      if (subjectSynonyms[subName]) return subjectSynonyms[subName];
+      for (const key in subjectSynonyms) {
+        if (subName.toLowerCase().includes(key.toLowerCase())) {
+          return subjectSynonyms[key];
+        }
+      }
+      return { short: subName.substring(0, 3).toUpperCase(), full: subName, textbook: subName, color: "cyan" };
+    }
+
+    // APPLICATION STATE
+    let stagesState = {};
+    let todosState = [];
+    let activeDayIndex = 0;
+    let realTodayStr = "2026-09-21";
+    let currentTodoFilter = "all";
+
+    try {
+      stagesState = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      todosState = JSON.parse(localStorage.getItem(TODOS_KEY)) || [];
+    } catch(e) {
+      stagesState = {};
+      todosState = [];
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(stagesState));
+        localStorage.setItem(TODOS_KEY, JSON.stringify(todosState));
+      } catch(e) {}
+    }
+
+    // INITIALIZATION
+    window.addEventListener("DOMContentLoaded", () => {
+      syncRealWorldDate();
+      startLiveClock();
+      renderPriorityPlan();
+      renderTodos();
+      updateAllMetrics();
+      checkOverdueBacklog();
+      renderTimetableGrid();
+    });
+
+    function syncRealWorldDate() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, "0");
+      const d = String(now.getDate()).padStart(2, "0");
+      realTodayStr = `${y}-${m}-${d}`;
+      const foundIdx = masterSchedule.findIndex(s => s.date === realTodayStr);
+      activeDayIndex = foundIdx !== -1 ? foundIdx : 0;
+    }
+
+    function startLiveClock() {
+      function update() {
+        const d = new Date();
+        let hours = d.getHours();
+        const minutes = String(d.getMinutes()).padStart(2, "0");
+        const seconds = String(d.getSeconds()).padStart(2, "0");
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12; hours = hours ? hours : 12;
+        const timeStr = `${String(hours).padStart(2, "0")}:${minutes}:${seconds} ${ampm}`;
+        const clockEl = document.getElementById("digitalClock");
+        if (clockEl) clockEl.innerText = timeStr;
+
+        const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const fullDateStr = `${dayNames[d.getDay()]}, ${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+        const shortDateStr = `${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+        
+        const dateEl = document.getElementById("digitalDate");
+        if (dateEl) dateEl.innerText = fullDateStr;
+        const heroDateBadge = document.getElementById("heroDateBadge");
+        if (heroDateBadge) heroDateBadge.innerText = shortDateStr;
+
+        const rawHour = d.getHours();
+        const greetingEl = document.getElementById("greetingLabel");
+        if (greetingEl) {
+          if (rawHour < 12) greetingEl.innerText = "GOOD MORNING";
+          else if (rawHour < 17) greetingEl.innerText = "GOOD AFTERNOON";
+          else greetingEl.innerText = "GOOD EVENING";
+        }
+      }
+      update();
+      setInterval(update, 1000);
+    }
+
+    function simulateNextDay(delta) {
+      activeDayIndex = Math.min(masterSchedule.length - 1, Math.max(0, activeDayIndex + delta));
+      renderPriorityPlan();
+      renderTodos();
+      updateAllMetrics();
+      checkOverdueBacklog();
+      showToast(`Switched to Day ${masterSchedule[activeDayIndex].day} (${masterSchedule[activeDayIndex].date})`, "📅");
+    }
+
+    function resetToRealToday() {
+      syncRealWorldDate();
+      renderPriorityPlan();
+      renderTodos();
+      updateAllMetrics();
+      checkOverdueBacklog();
+      showToast("Reset to current active day", "🔄");
+    }
+
+    function jumpToToday() {
+      syncRealWorldDate();
+      renderPriorityPlan();
+      renderTodos();
+      updateAllMetrics();
+      checkOverdueBacklog();
+      showToast("Jumped to today's schedule", "📌");
+    }
+
+    function navigateDay(dir) {
+      activeDayIndex = Math.min(masterSchedule.length - 1, Math.max(0, activeDayIndex + dir));
+      renderPriorityPlan();
+      renderTodos();
+      updateAllMetrics();
+      checkOverdueBacklog();
+    }
+
+    function renderPriorityPlan() {
+      const item = masterSchedule[activeDayIndex];
+      const container = document.getElementById("priorityTasksContainer");
+      container.innerHTML = "";
+
+      const isToday = item.date === realTodayStr;
+      const todayBadge = document.getElementById("todayPlanBadge");
+      if (todayBadge) {
+        todayBadge.innerText = `Day ${item.day} • ${item.date}${isToday ? ' (TODAY)' : ''}`;
+      }
+
+      const todayBtn = document.getElementById("todayButtonLabel");
+      if (todayBtn) {
+        todayBtn.innerText = isToday ? "Today" : `Day ${item.day}`;
+      }
+
+      if (item.isSunday) {
+        const sunId = `d${item.day}_sun`;
+        const isDone = !!stagesState[sunId];
+        container.innerHTML = `
+          <div class="p-4 rounded-xl bg-[#141622] border border-amber-500/40 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Sunday — Backlog & Revision</span>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" ${isDone ? 'checked' : ''} onchange="toggleTask('${sunId}')" class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-amber-500 focus:ring-amber-500/20">
+                <span class="text-xs text-zinc-300 font-medium">${isDone ? 'Completed' : 'Mark Done'}</span>
+              </label>
+            </div>
+            <h4 class="text-sm font-bold text-zinc-100">${item.title}</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">${item.desc}</p>
+          </div>
+        `;
+      } else {
+        const heavyId = `d${item.day}_h`;
+        const heavyDone = !!stagesState[heavyId];
+        const heavyMeta = getSubjectMeta(item.heavy.sub);
+        const branchMeta = item.heavy.branch ? getSubjectMeta(item.heavy.branch) : heavyMeta;
+
+        const heavyCard = document.createElement("div");
+        heavyCard.className = `p-4 rounded-xl border transition ${heavyDone ? 'bg-[#0f1015] border-zinc-800 opacity-60' : 'bg-[#141622] border-zinc-800 hover:border-zinc-700'}`;
+        heavyCard.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">${branchMeta.short} • Slot 1 (Heavy)</span>
+                <span class="text-[11px] text-zinc-400">${branchMeta.textbook}</span>
+              </div>
+              <h4 class="text-sm font-semibold text-zinc-100">${item.heavy.title}</h4>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer pt-1">
+              <input type="checkbox" ${heavyDone ? 'checked' : ''} onchange="toggleTask('${heavyId}')" class="w-5 h-5 rounded border-zinc-700 bg-zinc-900 text-cyan-500 focus:ring-cyan-500/20">
+            </label>
+          </div>
+        `;
+        container.appendChild(heavyCard);
+
+        const lightId = `d${item.day}_l`;
+        const lightDone = !!stagesState[lightId];
+        const lightMeta = getSubjectMeta(item.light.sub);
+
+        const lightCard = document.createElement("div");
+        lightCard.className = `p-4 rounded-xl border transition ${lightDone ? 'bg-[#0f1015] border-zinc-800 opacity-60' : 'bg-[#141622] border-zinc-800 hover:border-zinc-700'}`;
+        lightCard.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">${lightMeta.short} • Slot 2 (Light/Skill)</span>
+                <span class="text-[11px] text-zinc-400">${lightMeta.textbook}</span>
+              </div>
+              <h4 class="text-sm font-semibold text-zinc-100">${item.light.title}</h4>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer pt-1">
+              <input type="checkbox" ${lightDone ? 'checked' : ''} onchange="toggleTask('${lightId}')" class="w-5 h-5 rounded border-zinc-700 bg-zinc-900 text-purple-500 focus:ring-purple-500/20">
+            </label>
+          </div>
+        `;
+        container.appendChild(lightCard);
+      }
+    }
+
+    function toggleTask(taskId) {
+      stagesState[taskId] = !stagesState[taskId];
+      saveState();
+      renderPriorityPlan();
+      updateAllMetrics();
+      checkOverdueBacklog();
+      renderTimetableGrid();
+    }
+
+    function handleAddTodoSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("todoInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const newItem = {
+        id: Date.now(),
+        text: text,
+        day: masterSchedule[activeDayIndex].day,
+        done: false
+      };
+
+      todosState.unshift(newItem);
+      input.value = "";
+      saveState();
+      renderTodos();
+      updateAllMetrics();
+      showToast("To-do added successfully", "✨");
+    }
+
+    function toggleTodoDone(id) {
+      const item = todosState.find(t => t.id === id);
+      if (item) {
+        item.done = !item.done;
+        saveState();
+        renderTodos();
+        updateAllMetrics();
+      }
+    }
+
+    function deleteTodo(id) {
+      todosState = todosState.filter(t => t.id !== id);
+      saveState();
+      renderTodos();
+      updateAllMetrics();
+    }
+
+    function setTodoFilter(filter) {
+      currentTodoFilter = filter;
+      ["all", "active", "done"].forEach(f => {
+        const btn = document.getElementById(`filterBtn-${f}`);
+        if (btn) {
+          if (f === filter) {
+            btn.className = "px-2.5 py-1 rounded-lg bg-zinc-800 text-zinc-200 font-medium transition";
+          } else {
+            btn.className = "px-2.5 py-1 rounded-lg text-zinc-400 hover:text-white transition";
+          }
+        }
+      });
+      renderTodos();
+    }
+
+    function clearCompletedTodos() {
+      todosState = todosState.filter(t => !t.done);
+      saveState();
+      renderTodos();
+      updateAllMetrics();
+      showToast("Cleared completed to-dos", "🧹");
+    }
+
+    function renderTodos() {
+      const container = document.getElementById("todoItemsContainer");
+      container.innerHTML = "";
+
+      const currentDayNum = masterSchedule[activeDayIndex].day;
+      const filtered = todosState.filter(t => {
+        if (t.day !== currentDayNum) return false;
+        if (currentTodoFilter === "active") return !t.done;
+        if (currentTodoFilter === "done") return t.done;
+        return true;
+      });
+
+      const doneCount = todosState.filter(t => t.done && t.day === currentDayNum).length;
+      const totalCount = todosState.filter(t => t.day === currentDayNum).length;
+      const statsBadge = document.getElementById("todoStatsBadge");
+      if (statsBadge) statsBadge.innerText = `${doneCount} of ${totalCount} completed`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="text-xs text-zinc-500 text-center py-6">No to-dos for Day ${currentDayNum}. Add one above!</div>`;
+        return;
+      }
+
+      filtered.forEach(todo => {
+        const div = document.createElement("div");
+        div.className = `flex items-center justify-between gap-3 p-3 rounded-xl border transition ${todo.done ? 'bg-[#0f1015] border-zinc-800/60 opacity-60' : 'bg-[#141622] border-zinc-800'}`;
+        div.innerHTML = `
+          <label class="flex items-center gap-3 flex-1 cursor-pointer min-w-0">
+            <input type="checkbox" ${todo.done ? 'checked' : ''} onchange="toggleTodoDone(${todo.id})" class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-cyan-500 focus:ring-cyan-500/20">
+            <span class="text-xs text-zinc-200 truncate ${todo.done ? 'line-through text-zinc-500' : ''}">${escapeHtml(todo.text)}</span>
+          </label>
+          <button onclick="deleteTodo(${todo.id})" class="p-1 rounded text-zinc-500 hover:text-red-400 transition" title="Delete">×</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function checkOverdueBacklog() {
+      let overdueCount = 0;
+      const overdueListEl = document.getElementById("overdueItemsList");
+      if (overdueListEl) overdueListEl.innerHTML = "";
+
+      for (let i = 0; i < activeDayIndex; i++) {
+        const dayItem = masterSchedule[i];
+        if (dayItem.isSunday) {
+          const sunId = `d${dayItem.day}_sun`;
+          if (!stagesState[sunId]) {
+            overdueCount++;
+            appendOverdueItem(dayItem.day, dayItem.date, "Sunday Revision & Backlog", sunId);
+          }
+        } else {
+          const hId = `d${dayItem.day}_h`;
+          const lId = `d${dayItem.day}_l`;
+          if (!stagesState[hId]) {
+            overdueCount++;
+            appendOverdueItem(dayItem.day, dayItem.date, `Heavy: ${dayItem.heavy.title}`, hId);
+          }
+          if (!stagesState[lId]) {
+            overdueCount++;
+            appendOverdueItem(dayItem.day, dayItem.date, `Light: ${dayItem.light.title}`, lId);
+          }
+        }
+      }
+
+      const banner = document.getElementById("overdueAlertBanner");
+      const countText = document.getElementById("overdueCountText");
+      if (banner && countText) {
+        if (overdueCount > 0) {
+          banner.classList.remove("hidden");
+          countText.innerText = `You have ${overdueCount} unfinished task(s) from past study days.`;
+        } else {
+          banner.classList.add("hidden");
+        }
+      }
+    }
+
+    function appendOverdueItem(dayNum, dateStr, title, taskId) {
+      const list = document.getElementById("overdueItemsList");
+      if (!list) return;
+      const div = document.createElement("div");
+      div.className = "flex items-center justify-between gap-2 p-2.5 rounded-lg bg-[#161824] border border-zinc-800 text-xs";
+      div.innerHTML = `
+        <div class="truncate">
+          <span class="font-mono text-amber-400 mr-2">Day ${dayNum} (${dateStr})</span>
+          <span class="text-zinc-300">${escapeHtml(title)}</span>
+        </div>
+        <button onclick="toggleTask('${taskId}')" class="px-2 py-1 rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-semibold text-[11px] whitespace-nowrap transition">
+          Mark Done ✓
+        </button>
+      `;
+      list.appendChild(div);
+    }
+
+    function toggleOverdueDrawer() {
+      const drawer = document.getElementById("overdueDrawer");
+      if (drawer) drawer.classList.toggle("hidden");
+    }
+
+    function updateAllMetrics() {
+      let totalTasks = 0;
+      let completedTasks = 0;
+
+      masterSchedule.forEach(item => {
+        if (item.isSunday) {
+          totalTasks++;
+          if (stagesState[`d${item.day}_sun`]) completedTasks++;
+        } else {
+          totalTasks += 2;
+          if (stagesState[`d${item.day}_h`]) completedTasks++;
+          if (stagesState[`d${item.day}_l`]) completedTasks++;
+        }
+      });
+
+      const overallPct = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+      document.getElementById("overallPctText").innerText = `${overallPct}%`;
+      document.getElementById("overallCenterNum").innerText = `${overallPct}%`;
+      document.getElementById("completedTasksCount").innerText = `${completedTasks} / ${totalTasks}`;
+      
+      const overallCircle = document.getElementById("overallRingCircle");
+      if (overallCircle) {
+        const dashOffset = 213.6 - (213.6 * overallPct) / 100;
+        overallCircle.style.strokeDashoffset = dashOffset;
+      }
+
+      const currentWeekNum = Math.floor(activeDayIndex / 7);
+      const weekStart = currentWeekNum * 7;
+      const weekEnd = Math.min(masterSchedule.length, weekStart + 7);
+      let weekTotal = 0;
+      let weekDone = 0;
+
+      for (let i = weekStart; i < weekEnd; i++) {
+        const item = masterSchedule[i];
+        if (item.isSunday) {
+          weekTotal++;
+          if (stagesState[`d${item.day}_sun`]) weekDone++;
+        } else {
+          weekTotal += 2;
+          if (stagesState[`d${item.day}_h`]) weekDone++;
+          if (stagesState[`d${item.day}_l`]) weekDone++;
+        }
+      }
+
+      const weekPct = weekTotal > 0 ? Math.round((weekDone / weekTotal) * 100) : 0;
+      document.getElementById("weekPctText").innerText = `${weekPct}%`;
+      document.getElementById("weekCenterNum").innerText = `${weekPct}%`;
+      document.getElementById("weekCompletedCount").innerText = `${weekDone} / ${weekTotal}`;
+      document.getElementById("currentWeekTitleLabel").innerText = `Week ${currentWeekNum + 1} Milestone Progress`;
+
+      const weekCircle = document.getElementById("weekRingCircle");
+      if (weekCircle) {
+        const wOffset = 213.6 - (213.6 * weekPct) / 100;
+        weekCircle.style.strokeDashoffset = wOffset;
+      }
+
+      renderSubjectBarChart();
+    }
+
+    function renderSubjectBarChart() {
+      const container = document.getElementById("subjectBarChartContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const subjects = ["Physics", "Chemistry", "Biology", "Maths", "English", "Hindi", "Marathi", "SST", "Kaushal", "IT", "Science"];
+      const subCounts = {};
+      subjects.forEach(s => subCounts[s] = { total: 0, done: 0 });
+
+      masterSchedule.forEach(item => {
+        if (!item.isSunday) {
+          const hSub = item.heavy.sub;
+          const hKey = subCounts[hSub] ? hSub : "Science";
+          subCounts[hKey].total++;
+          if (stagesState[`d${item.day}_h`]) subCounts[hKey].done++;
+
+          const lSub = item.light.sub;
+          const lKey = subCounts[lSub] ? lSub : "Kaushal";
+          if (!subCounts[lKey]) {
+            subCounts[lKey] = { total: 0, done: 0 };
+          }
+          subCounts[lKey].total++;
+          if (stagesState[`d${item.day}_l`]) subCounts[lKey].done++;
+        }
+      });
+
+      const chartKeys = ["Physics", "Chemistry", "Biology", "Maths", "English", "Hindi", "Marathi", "SST", "Kaushal", "IT", "Science"];
+      chartKeys.forEach(key => {
+        const data = subCounts[key] || { total: 1, done: 0 };
+        const pct = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
+        const meta = getSubjectMeta(key);
+
+        const col = document.createElement("div");
+        col.className = "flex flex-col items-center gap-1 h-full justify-end group relative";
+        col.innerHTML = `
+          <div class="absolute -top-7 bg-zinc-900 text-zinc-200 text-[10px] font-mono px-1.5 py-0.5 rounded border border-zinc-700 opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap z-10">
+            ${meta.short}: ${pct}% (${data.done}/${data.total})
+          </div>
+          <div class="w-full bg-zinc-800/80 rounded-t overflow-hidden flex flex-col justify-end h-16">
+            <div class="w-full bg-cyan-500 transition-all duration-500" style="height: ${pct}%"></div>
+          </div>
+          <span class="text-[9px] font-mono text-zinc-400">${meta.short}</span>
+        `;
+        container.appendChild(col);
+      });
+    }
+
+    function renderTimetableGrid() {
+      const tbody = document.getElementById("timetableTableBody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+
+      const query = (document.getElementById("timetableSearchInput")?.value || "").toLowerCase();
+      let matchCount = 0;
+
+      masterSchedule.forEach(item => {
+        const textMatch = JSON.stringify(item).toLowerCase().includes(query);
+        if (!textMatch) return;
+        matchCount++;
+
+        const tr = document.createElement("tr");
+        if (item.isSunday) {
+          tr.className = "bg-amber-500/5 hover:bg-amber-500/10 transition";
+          const sunDone = !!stagesState[`d${item.day}_sun`];
+          tr.innerHTML = `
+            <td class="py-3 px-3 font-mono text-amber-400">Day ${item.day}<br><span class="text-[10px] text-zinc-500">${item.date}</span></td>
+            <td colspan="2" class="py-3 px-3">
+              <span class="font-bold text-amber-300">SUNDAY — BACKLOG & REVISION</span>
+              <p class="text-zinc-400 text-[11px] mt-0.5">${item.desc}</p>
+            </td>
+            <td class="py-3 px-3 text-right">
+              <input type="checkbox" ${sunDone ? 'checked' : ''} onchange="toggleTask('d${item.day}_sun')" class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-amber-500">
+            </td>
+          `;
+        } else {
+          tr.className = "hover:bg-zinc-900/50 transition";
+          const hDone = !!stagesState[`d${item.day}_h`];
+          const lDone = !!stagesState[`d${item.day}_l`];
+          tr.innerHTML = `
+            <td class="py-3 px-3 font-mono text-zinc-300">Day ${item.day}<br><span class="text-[10px] text-zinc-500">${item.date}</span></td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" ${hDone ? 'checked' : ''} onchange="toggleTask('d${item.day}_h')" class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-cyan-500">
+                <span class="${hDone ? 'line-through text-zinc-500' : 'text-zinc-200'}">${escapeHtml(item.heavy.title)}</span>
+              </div>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" ${lDone ? 'checked' : ''} onchange="toggleTask('d${item.day}_l')" class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-purple-500">
+                <span class="${lDone ? 'line-through text-zinc-500' : 'text-zinc-200'}">${escapeHtml(item.light.title)}</span>
+              </div>
+            </td>
+            <td class="py-3 px-3 text-right font-mono text-[11px] text-zinc-500">
+              ${(hDone && lDone) ? '✓ Done' : 'Pending'}
+            </td>
+          `;
+        }
+        tbody.appendChild(tr);
+      });
+
+      const countLabel = document.getElementById("timetableCountLabel");
+      if (countLabel) countLabel.innerText = `Showing ${matchCount} of 70 schedule days`;
+    }
+
+    function switchTab(tab) {
+      const dashView = document.getElementById("dashboardView");
+      const timeView = document.getElementById("timetableGridView");
+      const btnDash = document.getElementById("tabDashboard");
+      const btnTime = document.getElementById("tabTimetable");
+
+      if (tab === 'dashboard') {
+        dashView.classList.remove("hidden");
+        timeView.classList.add("hidden");
+        btnDash.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition bg-cyan-500 text-black font-semibold shadow-sm";
+        btnTime.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition text-zinc-400 hover:text-white";
+      } else {
+        dashView.classList.add("hidden");
+        timeView.classList.remove("hidden");
+        btnTime.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition bg-cyan-500 text-black font-semibold shadow-sm";
+        btnDash.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium transition text-zinc-400 hover:text-white";
+        renderTimetableGrid();
+      }
+    }
+
+    function showToast(message, icon = "✨") {
+      const container = document.getElementById("toastContainer");
+      if (!container) return;
+      const toast = document.createElement("div");
+      toast.className = "pointer-events-auto bg-[#181a26] border border-cyan-500/40 text-zinc-100 text-xs px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2.5 transform translate-y-2 opacity-0 transition-all duration-300";
+      toast.innerHTML = `<span class="text-base">${icon}</span><span>${escapeHtml(message)}</span>`;
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.classList.remove("translate-y-2", "opacity-0");
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.add("translate-y-2", "opacity-0");
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+      if (e.key === "ArrowLeft") navigateDay(-1);
+      if (e.key === "ArrowRight") navigateDay(1);
+      if (e.key.toLowerCase() === "t") document.getElementById("todoInput")?.focus();
+      if (e.key.toLowerCase() === "d") switchTab("dashboard");
+      if (e.key.toLowerCase() === "m") switchTab("timetable");
+    });
+  </script>
+</body>
+</html>
