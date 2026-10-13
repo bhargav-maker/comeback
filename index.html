@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D0F14">
+<title>StudyFlow</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/focusroom.css">
+<link rel="icon" href="icons/icon-192.png">
+</head>
+<body>
+
+<header id="app-header">
+  <div class="brand">Study<span>Flow</span></div>
+  <div id="streak-box" title="Consecutive days with both slots done">&#128293; <b id="streak-count">0</b></div>
+</header>
+
+<main>
+  <!-- TAB 1: FOCUS DASHBOARD -->
+  <section id="tab-dashboard" class="tab active">
+    <div id="today-card">
+      <h2 id="today-heading">Today's Blueprint</h2>
+      <div id="today-slots"></div>
+    </div>
+    <div id="ring-wrap">
+      <svg id="ring" viewBox="0 0 120 120">
+        <circle class="ring-bg" cx="60" cy="60" r="54"/>
+        <circle class="ring-fg" cx="60" cy="60" r="54" id="ring-fg"/>
+      </svg>
+      <div id="ring-label"><b id="ring-count">0</b><span>/ 140</span></div>
+    </div>
+    <h3 class="grid-title">70-Day Blueprint</h3>
+    <div id="progress-grid"></div>
+    <p class="grid-legend">
+      <span><i class="lg g0"></i>0 done</span><span><i class="lg g1"></i>1 done</span><span><i class="lg g2"></i>2 done</span>
+    </p>
+  </section>
+
+  <!-- TAB 2: TASK MANAGER & CAPTURE -->
+  <section id="tab-tasks" class="tab">
+    <form id="task-form">
+      <div class="task-input-row">
+        <input id="task-input" type="text" placeholder="Add homework, practical, idea..." autocomplete="off">
+        <button type="button" id="mic-btn" title="Voice capture">&#127908;</button>
+        <button type="submit" id="add-btn">&#65291;</button>
+      </div>
+      <div class="task-flags">
+        <label><input type="checkbox" id="flag-due"> Due today</label>
+        <label><input type="checkbox" id="flag-urgent"> &#128308; Urgent</label>
+      </div>
+    </form>
+
+    <div id="vault" hidden>
+      <h3>&#128230; Sunday Backlog Vault</h3>
+      <p class="vault-sub">Incomplete items from this week. Clear them to reset.</p>
+      <div id="vault-list"></div>
+    </div>
+
+    <input id="task-search" type="search" placeholder="Search tasks...">
+    <div id="filter-chips">
+      <button class="chip active" data-f="all">All</button>
+      <button class="chip" data-f="pending">Pending</button>
+      <button class="chip" data-f="due">Due Today</button>
+      <button class="chip" data-f="urgent">Urgent</button>
+      <button class="chip" data-f="done">Done</button>
+    </div>
+    <ul id="task-list"></ul>
+  </section>
+
+  <!-- TAB 3: FOCUS ROOM -->
+  <section id="tab-focus" class="tab">
+    <div id="focus-stage">
+      <div class="focus-top">
+        <select id="slot-link" title="Link to today's blueprint slot"></select>
+        <div class="toggles">
+          <button id="mode-toggle" class="mini-btn">&#9201; Pomodoro</button>
+          <button id="strict-toggle" class="mini-btn">&#128994; Normal</button>
+          <button id="audio-btn" class="mini-btn">&#128263; Audio</button>
+          <button id="zen-btn" class="mini-btn">&#129496; Zen</button>
+        </div>
+      </div>
+
+      <div id="timer-wrap">
+        <svg id="timer-svg" viewBox="0 0 240 240">
+          <circle class="timer-bg" cx="120" cy="120" r="104"/>
+          <circle class="timer-fg" cx="120" cy="120" r="104" id="timer-fg"/>
+        </svg>
+        <div id="timer-display">25:00</div>
+      </div>
+
+      <select id="pomo-minutes">
+        <option value="15">15 min</option>
+        <option value="25" selected>25 min</option>
+        <option value="45">45 min</option>
+      </select>
+
+      <div class="timer-controls">
+        <button id="start-btn" class="big-btn">&#9654; Start</button>
+        <button id="pause-btn" class="big-btn">&#9208; Pause</button>
+        <button id="reset-btn" class="big-btn">&#8634; Reset</button>
+      </div>
+      <p id="focus-status"></p>
+
+      <textarea id="scratchpad" placeholder="Scratchpad - jot formulas &amp; rough notes here (auto-saved)..." rows="5"></textarea>
+    </div>
+  </section>
+</main>
+
+<nav id="tabbar">
+  <button class="tab-btn active" data-tab="dashboard">&#127968;<span>Today</span></button>
+  <button class="tab-btn" data-tab="tasks">&#128203;<span>Tasks</span></button>
+  <button class="tab-btn" data-tab="focus">&#127919;<span>Focus</span></button>
+</nav>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
