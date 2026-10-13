@@ -1,1 +1,50 @@
-
+:root{
+  --bg:#0D0F14; --bg2:#141821; --bg3:#1B2130;
+  --tx:#E8ECF4; --tx2:#8B94A7; --ac:#4ADE80; --ac2:#166534;
+  --red:#F87171; --amber:#FBBF24; --line:#232B3D;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  background:var(--bg);color:var(--tx);
+  font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  display:flex;flex-direction:column;max-width:640px;margin:0 auto;
+  padding-bottom:72px;
+}
+#app-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  position:sticky;top:0;background:var(--bg);z-index:5;
+}
+.brand{font-weight:800;font-size:19px;letter-spacing:.3px}
+.brand span{color:var(--ac)}
+#streak-box{font-size:17px;color:var(--amber)}
+#streak-box b{color:var(--tx);font-size:19px}
+main{flex:1;padding:16px}
+.tab{display:none}
+.tab.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+h2{font-size:18px;margin-bottom:10px}
+h3{font-size:15px;color:var(--tx2);margin:18px 0 8px}
+button{cursor:pointer;border:none;border-radius:10px;font:inherit;color:var(--tx);background:var(--bg3)}
+input,select,textarea{
+  background:var(--bg2);border:1px solid var(--line);color:var(--tx);
+  border-radius:10px;padding:11px 12px;font:inherit;width:100%;
+}
+textarea{resize:vertical}
+#tabbar{
+  position:fixed;bottom:0;left:0;right:0;display:flex;
+  background:var(--bg2);border-top:1px solid var(--line);
+  max-width:640px;margin:0 auto;z-index:10;
+}
+.tab-btn{
+  flex:1;background:none;color:var(--tx2);padding:9px 0 8px;
+  font-size:20px;border-radius:0;display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.tab-btn span{font-size:11px}
+.tab-btn.active{color:var(--ac)}
+body.zen #app-header,body.zen #tabbar{display:none}
+body.zen main{padding:0}
+body.zen #tab-focus{display:block}
+body.zen #focus-stage{min-height:100vh;border:none;padding-top:40px}
+body.zen .focus-top .toggles{flex-wrap:wrap}
